@@ -2,10 +2,28 @@
   "name": "signalr-extended",
   "version": "1.0.0-dev",
   "description": "A nice signalr version, without a jquery dependency",
-  "main": "src/signalr.js",
-  "keywords": ["signalr", "jquery", "no", "no-jquery"],
+  "main": "dist/signalr-extended.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sateffen/signalr-extended"
+  },
+  "keywords": [
+    "signalr",
+    "signalr-client",
+    "no-jquery"
+  ],
   "dependencies": {
-    "jquery-deferred": "^0.3.1",
-    "jquery-param": "^0.2.0"
+    "jquery-deferred": "~0.3.1",
+    "jquery-param": "~0.2.0"
+  },
+  "devDependencies": {
+    "rollup": "~0.41.6",
+    "rollup-plugin-buble": "~0.15.0",
+    "rollup-plugin-commonjs": "~8.0.2",
+    "rollup-plugin-node-resolve": "~3.0.0"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "rollup -c rollup.config.js"
   }
 }
