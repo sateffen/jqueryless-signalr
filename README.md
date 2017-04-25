@@ -1,7 +1,11 @@
 # SignalR Extended
 
-This lib provides a basic version of signalR v2.2.1 wrapped with a jquery shim,
-so you won't need a complete jquery environment for using it.
+This is no real "extended" version for signalr, just extended by the nice fact,
+that you don't need a complete jquery to use it. It provides an own jquery shim,
+that makes signalr operate like usual.
+
+**WARNING**: I've not tested the code yet. You're welcome to test or contribute
+to this project, but as long as it's not on NPM yet, it's not tested enough.
 
 ## API
 
