@@ -1,16 +1,17 @@
 {
-  "name": "signalr-extended",
+  "name": "jqueryless-signalr",
   "version": "1.0.0-dev",
   "description": "A nice signalr version, without a jquery dependency",
-  "main": "dist/signalr-extended.js",
+  "main": "dist/jqueryless-signalr.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sateffen/signalr-extended"
+    "url": "https://github.com/sateffen/jqueryless-signalr"
   },
   "keywords": [
     "signalr",
     "signalr-client",
-    "no-jquery"
+    "no-jquery",
+    "jqueryless"
   ],
   "dependencies": {
     "jquery-deferred": "~0.3.1",

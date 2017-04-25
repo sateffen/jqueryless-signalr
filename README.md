@@ -1,8 +1,8 @@
-# SignalR Extended
+# jQueryless SignalR
 
-This is no real "extended" version for signalr, just extended by the nice fact,
-that you don't need a complete jquery to use it. It provides an own jquery shim,
-that makes signalr operate like usual.
+This is a signalR version, which does not depend on jquery (so it's "jqueryless").
+It provides it's own shim to replace jquery and exports just the needed function
+from signalR. 
 
 **WARNING**: I've not tested the code yet. You're welcome to test or contribute
 to this project, but as long as it's not on NPM yet, it's not tested enough.
@@ -18,8 +18,8 @@ Because the API description might not be that useful, I'll provide an example
 showing how to use this library correctly:
 
 ```js
-// first we import the signalR library
-const signalR = require('signalr-extended');
+// first we import the library
+const signalR = require('jqueryless-signalr');
 // then we define the connection options. You can use all options from the original
 const connectionOptions = {
     useDefaultPath: false // whether to use the default path or not

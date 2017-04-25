@@ -6,7 +6,7 @@ const buble = require('rollup-plugin-buble');
 module.exports = {
     entry: 'src/signalr.js',
     format: 'umd',
-    dest: 'dist/signalr-extended.js',
+    dest: 'dist/jqueryless-signalr.js',
     moduleName: "SignalR",
     plugins: [
         nodeResolve(),
