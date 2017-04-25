@@ -1,0 +1,11 @@
+{
+  "name": "signalr-extended",
+  "version": "1.0.0-dev",
+  "description": "A nice signalr version, without a jquery dependency",
+  "main": "src/signalr.js",
+  "keywords": ["signalr", "jquery", "no", "no-jquery"],
+  "dependencies": {
+    "jquery-deferred": "^0.3.1",
+    "jquery-param": "^0.2.0"
+  }
+}
