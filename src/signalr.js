@@ -1,3 +1,4 @@
+import {jQueryShim} from "./jqueryshim";
 /* jquery.signalR.core.js */
 /*global window:false */
 /*!
@@ -11,8 +12,6 @@
 
 /// <reference path="Scripts/jquery-1.6.4.js" />
 /// <reference path="jquery.signalR.version.js" />
-import {jQueryShim} from './jqueryshim';
-
 (function ($, window, undefined) {
 
     var resources = {
@@ -104,7 +103,7 @@ import {jQueryShim} from './jqueryshim';
 
         supportsKeepAlive = function (connection) {
             return connection._.keepAliveData.activated &&
-                connection.transport.supportsKeepAlive(connection);
+                   connection.transport.supportsKeepAlive(connection);
         },
 
         configureStopReconnectingTimeout = function (connection) {
@@ -481,8 +480,8 @@ import {jQueryShim} from './jqueryshim';
             if (connection.state === signalR.connectionState.connecting) {
                 return deferred.promise();
             } else if (changeState(connection,
-                    signalR.connectionState.disconnected,
-                    signalR.connectionState.connecting) === false) {
+                            signalR.connectionState.disconnected,
+                            signalR.connectionState.connecting) === false) {
                 // We're not connecting so try and transition into connecting.
                 // If we fail to transition then we're either in connected or reconnecting.
 
@@ -613,8 +612,8 @@ import {jQueryShim} from './jqueryshim';
                         signalR._.configurePingInterval(connection);
 
                         if (!changeState(connection,
-                                signalR.connectionState.connecting,
-                                signalR.connectionState.connected)) {
+                                            signalR.connectionState.connecting,
+                                            signalR.connectionState.connected)) {
                             connection.log("WARNING! The connection was not in the connecting state.");
                         }
 
@@ -1590,13 +1589,13 @@ import {jQueryShim} from './jqueryshim';
 
         isConnectedOrReconnecting: function (connection) {
             return connection.state === signalR.connectionState.connected ||
-                connection.state === signalR.connectionState.reconnecting;
+                   connection.state === signalR.connectionState.reconnecting;
         },
 
         ensureReconnectingState: function (connection) {
             if (changeState(connection,
-                    signalR.connectionState.connected,
-                    signalR.connectionState.reconnecting) === true) {
+                        signalR.connectionState.connected,
+                        signalR.connectionState.reconnecting) === true) {
                 $(connection).triggerHandler(events.onReconnecting);
             }
             return connection.state === signalR.connectionState.reconnecting;
@@ -1709,7 +1708,7 @@ import {jQueryShim} from './jqueryshim';
                         ex,
                         connection.socket
                     ),
-                        data]);
+                    data]);
             }
         },
 
@@ -1744,8 +1743,8 @@ import {jQueryShim} from './jqueryshim';
                     transportLogic.clearReconnectTimeout(connection);
 
                     if (changeState(connection,
-                            signalR.connectionState.reconnecting,
-                            signalR.connectionState.connected) === true) {
+                                    signalR.connectionState.reconnecting,
+                                    signalR.connectionState.connected) === true) {
                         $connection.triggerHandler(events.onReconnect);
                     }
                 };
@@ -1902,16 +1901,16 @@ import {jQueryShim} from './jqueryshim';
 
             if (reconnecting) {
                 connection._.reconnectAttemptTimeoutHandle = window.setTimeout(function () {
-                        if (opened === false) {
-                            // If we're reconnecting and the event source is attempting to connect,
-                            // don't keep retrying. This causes duplicate connections to spawn.
-                            if (connection.eventSource.readyState !== window.EventSource.OPEN) {
-                                // If we were reconnecting, rather than doing initial connect, then try reconnect again
-                                that.reconnect(connection);
-                            }
+                    if (opened === false) {
+                        // If we're reconnecting and the event source is attempting to connect,
+                        // don't keep retrying. This causes duplicate connections to spawn.
+                        if (connection.eventSource.readyState !== window.EventSource.OPEN) {
+                            // If we were reconnecting, rather than doing initial connect, then try reconnect again
+                            that.reconnect(connection);
                         }
-                    },
-                    that.timeOut);
+                    }
+                },
+                that.timeOut);
             }
 
             connection.eventSource.addEventListener("open", function (e) {
@@ -1924,8 +1923,8 @@ import {jQueryShim} from './jqueryshim';
                     opened = true;
 
                     if (changeState(connection,
-                            signalR.connectionState.reconnecting,
-                            signalR.connectionState.connected) === true) {
+                                         signalR.connectionState.reconnecting,
+                                         signalR.connectionState.connected) === true) {
                         $connection.triggerHandler(events.onReconnect);
                     }
                 }
@@ -2254,8 +2253,8 @@ import {jQueryShim} from './jqueryshim';
 
         started: function (connection) {
             if (changeState(connection,
-                    signalR.connectionState.reconnecting,
-                    signalR.connectionState.connected) === true) {
+                signalR.connectionState.reconnecting,
+                signalR.connectionState.connected) === true) {
 
                 $(connection).triggerHandler(events.onReconnect);
             }
@@ -2318,8 +2317,8 @@ import {jQueryShim} from './jqueryshim';
                     privateData.reconnectTimeoutId = null;
 
                     if (changeState(instance,
-                            signalR.connectionState.reconnecting,
-                            signalR.connectionState.connected) === true) {
+                                    signalR.connectionState.reconnecting,
+                                    signalR.connectionState.connected) === true) {
                         // Successfully reconnected!
                         instance.log("Raising the reconnect event");
                         $(instance).triggerHandler(events.onReconnect);

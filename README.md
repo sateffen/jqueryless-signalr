@@ -2,7 +2,7 @@
 
 This is a signalR version, which does not depend on jquery (so it's "jqueryless").
 It provides it's own shim to replace jquery and exports just the needed function
-from signalR. 
+from signalR.
 
 **WARNING**: I've not tested the code yet. You're welcome to test or contribute
 to this project, but as long as it's not on NPM yet, it's not tested enough.
