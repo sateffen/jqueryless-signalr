@@ -26,7 +26,7 @@
     "signalr": "~2.2.1"
   },
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "npm run generateSignalR && npm run build",
     "build": "rollup -c rollup.config.js",
     "generateSignalR": "rm src/signalr.js && cp node_modules/signalr/jquery.signalR.js src/signalr.js && jscodeshift -t codemod/transform.js src/signalr.js"
   }
