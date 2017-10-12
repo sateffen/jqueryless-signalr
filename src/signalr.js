@@ -2,7 +2,7 @@ import {jQueryShim} from "./jqueryshim";
 /* jquery.signalR.core.js */
 /*global window:false */
 /*!
- * ASP.NET SignalR JavaScript Library v2.2.1
+ * ASP.NET SignalR JavaScript Library v2.2.2
  * http://signalr.net/
  *
  * Copyright (c) .NET Foundation. All rights reserved.
@@ -951,6 +951,9 @@ import {jQueryShim} from "./jqueryshim";
 
             // Clear out our message buffer
             connection._.connectingMessageBuffer.clear();
+            
+            // Clean up this event
+            $(connection).unbind(events.onStart);
 
             // Trigger the disconnect event
             changeState(connection, connection.state, signalR.connectionState.disconnected);
@@ -2228,8 +2231,8 @@ import {jQueryShim} from "./jqueryshim";
                 }
 
                 // Ensure the iframe is where we left it
-                if (connection.frame.parentNode === window.document.body) {
-                    window.document.body.removeChild(connection.frame);
+                if (connection.frame.parentNode === window.document.documentElement) {
+                    window.document.documentElement.removeChild(connection.frame);
                 }
 
                 delete transportLogic.foreverFrame.connections[connection.frameId];
@@ -2952,7 +2955,7 @@ import {jQueryShim} from "./jqueryshim";
 /*global window:false */
 /// <reference path="jquery.signalR.core.js" />
 (function ($, undefined) {
-    $.signalR.version = "2.2.1";
+    $.signalR.version = "2.2.2";
 }(jQueryShim));
 
 const signalR = jQueryShim.hubConnection;

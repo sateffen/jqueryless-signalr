@@ -18,16 +18,18 @@
     "jquery-param": "~0.2.0"
   },
   "devDependencies": {
-    "jscodeshift": "~0.3.30",
-    "rollup": "~0.41.6",
-    "rollup-plugin-buble": "~0.15.0",
-    "rollup-plugin-commonjs": "~8.0.2",
+    "cpy-cli": "~1.0.1",
+    "jscodeshift": "~0.3.32",
+    "rimraf": "~2.6.2",
+    "rollup": "~0.50.0",
+    "rollup-plugin-buble": "~0.16.0",
+    "rollup-plugin-commonjs": "~8.2.1",
     "rollup-plugin-node-resolve": "~3.0.0",
-    "signalr": "~2.2.1"
+    "signalr": "~2.2.2"
   },
   "scripts": {
     "prepare": "npm run generateSignalR && npm run build",
     "build": "rollup -c rollup.config.js",
-    "generateSignalR": "rm src/signalr.js && cp node_modules/signalr/jquery.signalR.js src/signalr.js && jscodeshift -t codemod/transform.js src/signalr.js"
+    "generateSignalR": "rimraf src/signalr.js && cpy node_modules/signalr/jquery.signalR.js src/ --rename=signalr.js && jscodeshift -t codemod/transform.js src/signalr.js"
   }
 }
